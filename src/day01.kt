@@ -6,6 +6,7 @@ fun day01 () {
     part1(input)
     part2(input)
 }
+
 private fun part1(input: String) {
     var sum = 0
 
