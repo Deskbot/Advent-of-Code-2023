@@ -11,7 +11,19 @@ private fun part1(input: String) {
         .filter { line -> line.isNotEmpty() }
         .map { line -> parseGame(line) }
 
-    println(games)
+    var sumOfIds = 0
+
+    for (game in games) {
+        val possible = game.reds.all { n -> n <= max.red }
+                && game.greens.all { n -> n <= max.green }
+                && game.blues.all { n -> n <= max.blue }
+
+        if (possible) {
+            sumOfIds += game.id
+        }
+    }
+
+    println(sumOfIds)
 }
 
 class Cubes(
@@ -21,7 +33,7 @@ class Cubes(
 )
 
 class Game(
-    val num: Int,
+    val id: Int,
     val reds: Array<Int>,
     val greens: Array<Int>,
     val blues: Array<Int>,
