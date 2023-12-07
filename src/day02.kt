@@ -1,15 +1,13 @@
 fun day02() {
     val input = readInput(2)
 
-    part1(input)
-}
-
-private fun part1(input: String) {
     val max = Cubes(12, 13, 14)
 
     val games = input.split("\n")
         .filter { line -> line.isNotEmpty() }
         .map { line -> parseGame(line) }
+
+    // part 1
 
     var sumOfIds = 0
 
@@ -23,7 +21,21 @@ private fun part1(input: String) {
         }
     }
 
+    println("Part 1")
     println(sumOfIds)
+
+    // part 2
+
+    val powerSets = games.map{ game ->
+        val mostReds = game.reds.max()
+        val mostGreens = game.greens.max()
+        val mostBlues = game.blues.max()
+
+        mostReds * mostGreens * mostBlues
+    }
+
+    println("Part2")
+    println(powerSets.sum())
 }
 
 class Cubes(
